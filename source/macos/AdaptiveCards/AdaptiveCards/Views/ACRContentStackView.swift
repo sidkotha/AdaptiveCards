@@ -324,7 +324,7 @@ extension ACRContentStackView: InputHandlingViewErrorDelegate {
 
 class NoClippingLayer: CALayer {
     override var masksToBounds: Bool {
-        // swiftlint:disable unused_setter_value
+        // swiftlint:disable superfluous_disable_command unused_setter_value
         get { return false }
         set { }
     }
