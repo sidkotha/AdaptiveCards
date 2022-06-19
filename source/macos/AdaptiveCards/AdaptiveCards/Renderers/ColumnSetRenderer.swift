@@ -46,6 +46,11 @@ class ColumnSetRenderer: BaseCardElementRendererProtocol {
             wrappingView.identifier = NSUserInterfaceItemIdentifier(column.getId() ?? "")
             
             wrappingView.addArrangedSubview(columnView)
+            
+            // adding leading anchor for column view inside wrappingView with respect to spacing added
+            let spaceAdded = HostConfigUtils.getSpacing(column.getSpacing(), with: hostConfig)
+            columnView.leadingAnchor.constraint(equalTo: wrappingView.leadingAnchor, constant: CGFloat(truncating: spaceAdded)).isActive = true
+            
             columnView.trailingAnchor.constraint(equalTo: wrappingView.trailingAnchor).isActive = true
             columnSetView.addView(wrappingView, in: gravityArea)
             BaseCardElementRenderer.shared.configBleed(collectionView: columnView, parentView: columnSetView, with: hostConfig, element: column, parentElement: columnSet)
